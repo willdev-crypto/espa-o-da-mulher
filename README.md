@@ -85,5 +85,5 @@ Sinta-se à vontade para contribuir com melhorias, correções de bugs ou novas 
 
 ## Contato
 
-Para qualquer dúvida ou sugestão, entre em contato através do e-mail: seu-email@exemplo.com.
+Para qualquer dúvida ou sugestão, entre em contato atravs de uma Issue.
 
