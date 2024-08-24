@@ -1,0 +1,32 @@
+/* Define o estilo do fundo da página */
+body {
+  background-color: rgb(236, 20, 128); /* Cor de fundo rosa */
+  font-family: Arial, sans-serif;
+}
+
+/* Estilo do contêiner do carrossel */
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Estilo do slide do carrossel */
+.carousel-slide {
+  display: flex;
+  transition: 0.5s ease;
+}
+
+/* Estilo dos itens do carrossel */
+.carousel-item img {
+  width: 100%; /* Ajusta a largura para preencher o contêiner */
+  height: auto; /* Mantém a proporção da imagem */
+  max-height: 300px; /* Define uma altura máxima para as imagens */
+  object-fit: cover; /* Faz a imagem cobrir o contêiner mantendo a proporção */
+}
+
+/* Estilo das informações sobre o produto no carrossel */
+.carousel-info {
+  background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
+  color: rgb(236, 75, 75);
+  padding: 15px;
+}
