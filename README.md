@@ -83,7 +83,5 @@ Bem-vindo ao projeto **Administração Espaço Da Mulher**, a solução ideal pa
 
 Sinta-se à vontade para contribuir com melhorias, correções de bugs ou novas funcionalidades. Faça um fork do repositório, crie uma branch para suas alterações e envie um pull request.
 
-## Contato
 
-Para qualquer dúvida ou sugestão, entre em contato através de uma Pull Request.
 
