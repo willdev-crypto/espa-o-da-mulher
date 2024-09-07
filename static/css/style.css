@@ -30,3 +30,19 @@ body {
   color: rgb(236, 75, 75);
   padding: 15px;
 }
+
+@media (max-width: 768px) {
+  body {
+      font-size: 14px; /* Ajusta o tamanho da fonte */
+  }
+  .carousel-item img {
+      max-height: 200px; /* Ajusta a altura máxima para dispositivos móveis */
+  }
+}
+
+/* Estilo das informações sobre o produto no carrossel para facilitar a localizção */
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
+  color: rgb(236, 75, 75);
+  padding: 15px;
+}
