@@ -5,5 +5,10 @@
 
 {% block content %}
 <h2>Bem-vindo, {{ role }}</h2>
-<p> Elione Aqui você pode gerenciar o sistema.</p>
+<p>Elione, aqui você pode gerenciar o sistema.</p>
+
+<!-- Adicione o link para adicionar um novo produto -->
+<p><a href="{{ url_for('add_product') }}">Adicionar Novo Produto</a></p>
+
+<!-- Outras funcionalidades ou informações do dashboard -->
 {% endblock %}
