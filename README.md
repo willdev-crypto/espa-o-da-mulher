@@ -1,6 +1,6 @@
 
 
-# Administração 
+# Adm
 
 Bem-vindo ao projeto **Administração Home**, a solução ideal para gerenciar a perfumaria **O Espaço da Mulher**. Este aplicativo foi desenvolvido para facilitar o controle de estoque, gestão de vendas e muito mais, com uma interface web simples e intuitiva.
 
