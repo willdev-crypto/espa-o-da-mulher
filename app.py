@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 
@@ -30,6 +31,12 @@ class User(db.Model, UserMixin):
     phone = db.Column(db.String(20), nullable=False)
     is_admin = db.Column(db.Boolean, default=False)
 
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
+
 # Modelo de Produto
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -45,7 +52,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         user = User.query.filter_by(username=username).first()
-        if user and user.password == password:
+        if user and user.check_password(password):
             login_user(user)
             flash('Login bem-sucedido!', 'success')
             return redirect(url_for('index'))
