@@ -1,13 +1,17 @@
+import os
 from flask import Flask, render_template, redirect, url_for, request, flash
-from flask_sqlalchemy import SQLAlchemy 
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user  # type: ignore
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
 app = Flask(__name__)
-db_path = 'H:\\db\\perfumaria.db'
 
-app.config['SECRET_KEY'] = 'your_secret_key'
+# Configuração do caminho absoluto para o banco de dados
+db_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'instance', 'perfumaria.db')
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = 'your_secret_key'
 
+# Inicializando o banco de dados e o gerenciador de login
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 
@@ -72,7 +76,7 @@ def remove_user(user_id):
 # Rota para visualizar produtos
 @app.route('/products')
 def products():
-    products = Product.query.all()  # Busca todos os produtos do banco de dados
+    products = Product.query.all()
     is_admin = current_user.is_authenticated and current_user.is_admin
     return render_template('products.html', products=products, is_admin=is_admin)
 
@@ -107,19 +111,9 @@ def user_profile(user_id):
     user = User.query.get_or_404(user_id)
     return render_template('user_profile.html', user=user)
 
+# Inicializa o banco de dados quando o app é executado
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()  # Cria as tabelas no banco de dados, se ainda não existirem
+        print("Banco de dados inicializado com sucesso!")
     app.run(debug=True)
-
-
-from your_app import db, app
-
-
-with app.app_context():
-    db.create_all() 
-
-with app.app_context():
-    try:
-        db.create_all()  
-        print("Conexão ao banco de dados estabelecida com sucesso!")
-    except Exception as e:
-        print(f"Erro ao conectar ao banco de dados: {e}")
